@@ -1,12 +1,12 @@
-# Document Transportation Robot (DocuBot) 🤖📄
+# Document Transportation Robot (DocuBot) 
 
 > **An autonomous logistic solution for inter-departmental document transfer using TinyML and 1D-CNN obstacle classification.**
 
 ## I. Purpose of the Project
 
-The primary objective of this project is to automate the transportation of physical documents between departments, reducing the manual labor and time consumption associated with administrative logistics.
+The primary objective of this project is to create a prototype in order to automate the transportation of physical documents between departments, reducing the manual labor and time consumption associated with administrative logistics.
 
-Designed as a "load-and-go" system, the robot autonomously navigates office environments using a linear following mechanism. It is capable of carrying light payloads (up to 100 grams) independently. Unlike standard line-followers, this system integrates **Behavioral AI** to solve a key safety challenge: distinguishing between static infrastructure (walls) and dynamic obstacles (humans). Upon detecting a human via its AI core, the robot signals an auditory warning ("honk") to request the path be cleared, facilitating smooth interaction with office workers.
+Designed as a "load-and-go" system, the robot autonomously navigates office environments using a linear following mechanism. It is capable of carrying light payloads (up to 0.4 kg) independently. Unlike standard line-followers, this system integrates Behavioral AI to solve a key safety challenge: distinguishing between static infrastructure (the environment) and dynamic obstacles (humans). Upon detecting a human via its AI core, the ESP32CAM sends signals to the Arduino Uno via serial communication to stop the robot, facilitating smooth interaction with office workers.
 
 ---
 
@@ -37,50 +37,31 @@ This project builds upon existing research in autonomous navigation and TinyML (
 
 ---
 
-### 🛠️ Technologies Used
+### Technologies Used
 
 ### Hardware
 
+**Power**
+- 7.4V 9600 mAh Li-ion battery
+- Buck Converter
 
-**Microcontroller:** ESP32 Module (Dual-core 240MHz).
+**Microcontrollers**
+- Arduino Uno Module
+- AIThinker ESP32CAM Module
 
-
-* **Sensors:**
-  
-**Ultrasonic Sensor (HC-SR04):** Primary input for the 1D-CNN (Time-Series Data).
-
-
-  
-**IR Sensor Array:** For line tracking and path navigation.
-
-
-
-
-* **Actuators:**
-  
-**DC Geared Motors:** 12V 2A, 100-200 RPM for locomotion.
-
-
-  
-**TB6612FNG Driver:** High-efficiency dual motor controller.
-
-
-  
-**Passive Buzzer:** Auditory feedback system.
-
-
-
-
-
-**Power:** Lithium-ion 2S (7.4V) battery with 5V Buck Converter.
-
+**Others**
+- L298N Motor Driver
+- 6V 1.5A, 100-200 RPM DC Geared TT Motors
+- IR Sensor Module
+- Arduino Uno Sensor Shield
+- 32GB Micro SD Card
+- M-F and F-F Jumper Wires
 
 
 ### Software & AI
 
-* **Platform:** Arduino IDE / PlatformIO.
+* **Platform:** Arduino IDE / PlatformIO, Edge Impulse.
 * **AI Architecture:** **1D Convolutional Neural Network (1D-CNN)**.
-* *Input:* Sliding window of ultrasonic distance readings.
 * *Kernel:* Convolves over time-series data to extract movement patterns.
 * *Output:* Binary Classification (0: Static Obstacle, 1: Dynamic Human).
 
@@ -96,7 +77,6 @@ The system operates as a closed loop where the **AI Core** interrupts the **Navi
 graph TD
     subgraph SENSORS
     A[IR Line Sensors] -->|Position Error| B(ESP32 Main Loop)
-    C[Ultrasonic Sensor] -->|Distance Data Stream| D(1D-CNN Model)
     end
 
     subgraph PROCESSING
@@ -144,4 +124,3 @@ Project Demonstration Video:
 https://drive.google.com/drive/folders/1Elu-x6MZOU3oT3bXp9KwUPpn2nphEKBT?usp=sharing
 
 - To address stability challenges with securing loose documents during the initial testing phase, a power bank is employed as a dense weight substitute. This proxy effectively validates the robot's structural integrity and motor torque capacity to ensure it can reliably transport the target payload mass of 100 grams.
-](https://github.com/grrrrmar/PROJECT_DocuBot)](https://github.com/grrrrmar/PROJECT_DocuBot)](https://github.com/grrrrmar/PROJECT_DocuBot)
