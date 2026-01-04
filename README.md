@@ -119,8 +119,8 @@ The robot's architecture is divided into three functional layers:
 | **IR Sensor** | GPIO 13 | Line Detection |
 | **Buzzer** | GPIO 4 | Warning Signal |
 
-## V. Demo Video
-Project Demonstration Video:
+## V. Demo Video & Project Document 
+Project Demonstration Video, and Project Document:
 https://drive.google.com/drive/folders/1Elu-x6MZOU3oT3bXp9KwUPpn2nphEKBT?usp=sharing
 
 - To address stability challenges with securing loose documents during the initial testing phase, a power bank is employed as a dense weight substitute. This proxy effectively validates the robot's structural integrity and motor torque capacity to ensure it can reliably transport the target payload mass of 100 grams.
